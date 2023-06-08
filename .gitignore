@@ -1,0 +1,10 @@
+*.pyc
+__pycache__
+env
+*.sqlite3
+.DS_Store
+app/logs/*
+app/mediafiles/*
+.env.dev
+.env.prod
+.env.prod.db
