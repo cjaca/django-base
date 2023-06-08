@@ -1,5 +1,5 @@
 """
-URL configuration for skytree project.
+URL configuration for core project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,7 +25,8 @@ from tasks.views import get_status, home, run_task
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", home, name="home"),
+    path("home/", home, name="home"),
+    path("", include("tasks.urls")),
     path("upload/", image_upload, name="upload"),
     path("tasks/<task_id>/", get_status, name="get_status"),
     path("tasks/", run_task, name="run_task"),

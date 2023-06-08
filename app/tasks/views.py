@@ -2,8 +2,15 @@ from celery.result import AsyncResult
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import ListView
 
 from tasks.sample_tasks import create_task
+from .models import Order, Product
+
+
+class OrderListView(ListView):
+    model = Order
+    template_name = 'orders/order_list.html'
 
 
 def home(request):

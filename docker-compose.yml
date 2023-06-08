@@ -16,10 +16,8 @@ services:
     image: postgres:13.0-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=skytree
-      - POSTGRES_PASSWORD=skytree
-      - POSTGRES_DB=skytree_dev
+    env_file:
+      - ./.env.dev.db
 
 volumes:
   postgres_data:
